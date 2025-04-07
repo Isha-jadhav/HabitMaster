@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#4CAF50"/>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.png" type="image/png"/>
+  <title>HabitMaster</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>HabitMaster 🧠</h1>
+
+    <div class="top-bar">
+      <input type="text" id="habitInput" placeholder="Enter a new habit..." />
+      <button onclick="addHabit()">Add</button>
+      <button onclick="toggleDarkMode()">🌙</button>
+    </div>
+
+    <ul id="habitList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- Register service worker for PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('Service Worker registered!', reg))
+          .catch(err => console.log('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
